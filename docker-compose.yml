@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  dxf_engraver:
+    build:
+      context: ./src
+      dockerfile: ./Dockerfile
+    container_name: dxf_engraver
+    depends_on:
+    -  vis_database
+    restart: unless-stopped
+    env_file:
+      - ./conf/common.env
