@@ -1,25 +1,10 @@
-git:
-  depth: false
-branches:
-  only:
-    - master
-sudo: required
 language: python
 python:
-  - "3.6"
-notifications:
-  email: false
+  - "3.8"
+sudo: false
 install:
-  - pip install -U pip
   - pip install -r requirements.txt
 script:
-  - ./run_tests.sh
-addons:
-  postgresql: "10"
-  apt:
-    packages:
-      - postgresql-10
-      - postgresql-client-10
-env:
-  global:
-    - PGPORT=5433
+  - make test-ci lint-ci
+after_success:
+  - coveralls
