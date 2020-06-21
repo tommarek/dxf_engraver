@@ -22,7 +22,7 @@ help:
 
 venv: venv/bin/activate
 venv/bin/activate: requirements.txt
-	@test -d venv || virtualenv venv
+	@test -d venv || virtualenv venv -p python3.7
 	@$(PIP) install -Ur requirements.txt
 	@touch venv/bin/activate
 
